@@ -38,7 +38,11 @@ is the *implementation state*.
 - Working dir: `/Users/shreychechani/Desktop/Razorpay/recon-agent` (project moved from
   the old `Desktop/Stripe/...` path — update any stale references you see).
 - Python 3.11 venv managed by **uv**. Interpreter: `.venv/bin/python`.
-- NOT a git repo yet. `git init` if the user wants version control.
+- Git repo, pushed to `origin` = https://github.com/shreychechani/Recon-Agent.git
+  (default branch `main`). History is a clean phase-by-phase sequence of 12 commits
+  (scaffolding → models → generator → eval → ingest → candidates → deterministic →
+  assignment → adjudicator → learned+pipeline → api/ui → docs). Commit convention:
+  Conventional Commits; **no "Claude" / co-author trailers in messages** (per user).
 - Deps installed via `uv pip install -e ".[dev]"`. Core: pydantic v2, duckdb, scipy, numpy, anthropic, python-dotenv, openpyxl, fastapi, uvicorn, pytest.
 
 Common commands (run from `recon-agent/`):
