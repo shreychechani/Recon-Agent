@@ -13,6 +13,44 @@ Built for the Razorpay AI Buildathon (Track 4).
 
 ---
 
+## The problem, in plain terms
+
+When a business takes online payments, three different systems record the *same money*
+in three incompatible ways:
+
+- **Your order ledger** — "customer paid ₹500 for order #123 on Monday."
+- **The payment gateway** (Razorpay) — bundles many payments, deducts its fee, and pays
+  you **one lump** on a settlement schedule: "here's ₹48,700 on Wednesday."
+- **Your bank statement** — "₹48,700 arrived Wednesday. Note: `SETTLEMENT PYT-7261-6751 CR`."
+
+The daily question every finance team must answer is: **which orders are inside that
+bank deposit?** It's hard because fees and taxes make the amounts not line up, one
+deposit bundles dozens of orders, the reference codes in bank narrations are mangled or
+missing, and the data contains genuine look-alikes (two deposits for the same amount on
+the same day; a fraudulent-looking entry that copied a real reference). Today this is
+mostly done **by hand in Excel** — slow, and one wrong match is misattributed money.
+
+**recon-agent automates the matching — and, crucially, refuses to guess when it isn't
+sure.** It auto-resolves what it can prove, and hands the genuinely ambiguous rest to a
+human with all the evidence laid out.
+
+```mermaid
+flowchart LR
+    O["📒 Order ledger<br/>(what you sold)"]
+    S["🏦 Gateway settlements<br/>(payout batches + fees)"]
+    B["💳 Bank statement<br/>(credits that landed)"]
+    O --> AG
+    S --> AG
+    B --> AG
+    AG(["recon-agent"])
+    AG --> M["✅ Auto-resolved<br/>~88% at 100% precision"]
+    AG --> Q["🙋 Abstained<br/>routed to a human"]
+    Q --> H["Analyst resolves it<br/>once, in the console"]
+    H -.->|"mints a verified rule"| AG
+```
+
+---
+
 ## The thesis: precision over coverage
 
 A reconciliation tool that is 98% accurate is not 98% useful — it is a tool an analyst
@@ -35,6 +73,46 @@ Concretely that means:
   propose; only arithmetic disposes.
 - **A learning loop** turns each analyst resolution into a reusable, *verified* rule —
   the system gets better as it is used, without ever letting "learned" mean "trusted."
+
+---
+
+## How it works — the decision cascade
+
+Each bank credit runs through an ordered cascade. **The first layer confident enough to
+be safe wins**; anything ambiguous falls through to the next layer; whatever survives the
+whole cascade is abstained (routed to the human queue). Every layer shares one global
+*consumed-line / consumed-batch* ledger, so a settlement line can be spent **at most
+once** — the single invariant that makes the traps fail safely.
+
+```mermaid
+flowchart TD
+    C["Bank credit"] --> CI["Candidate index<br/>reference · amount · date evidence"]
+    CI --> R{"Learned rule?<br/>recover a missed reference"}
+    R --> A{"4a · Exact reference<br/>(amount within ±5 paise)"}
+    A -->|"unique match"| OK(["matched ✓"])
+    A -->|"contended / miss"| Bf{"4b · Fee-adjusted amount<br/>(single candidate)"}
+    Bf -->|"match"| OK
+    Bf -->|"miss"| D{"4c · Bounded subset-sum<br/>(unique subset only)"}
+    D -->|"unique subset"| OK
+    D -->|"ambiguous / miss"| E{"Phase 5 · Global assignment<br/>one-to-one + un-forgeable date guard"}
+    E -->|"confident + clear"| OK
+    E -->|"still contended"| F{"Phase 6 · LLM adjudicator<br/>proposes a label · guards re-verify"}
+    F -->|"re-verified, conf ≥ τ"| OK
+    F -->|"not confident"| AB(["abstain → human queue"])
+```
+
+> A confident **`no_match`** (e.g. a trap that matches nothing real) is also a *decision*
+> — it counts toward coverage alongside `matched`. Only `abstain` goes to the human.
+
+| layer | what it does | why it's safe |
+| ----- | ------------ | ------------- |
+| **4a Exact reference** | narration reference == batch reference, amount within ±5 paise | if *two* credits claim one batch, neither auto-resolves — deferred to assignment |
+| **4b Fee-adjusted amount** | single candidate whose recomputed net (gross − fees/tax) matches | only fires when exactly one batch is viable |
+| **4c Bounded subset-sum** | finds the subset of free lines summing to the credit | matches only on a **unique** subset; ambiguous or oversized → abstain |
+| **Phase 5 Assignment** | max-weight one-to-one over contended credits × batches | winner must be the **best-dated** claimant — a forged reference can't win |
+| **Phase 6 Adjudicator** | LLM picks a label from pre-enumerated options | every proposal re-summed & guarded; an adversarial model still can't break precision |
+
+Full walkthrough, the trap taxonomy, and the guards: **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 ---
 
@@ -72,6 +150,19 @@ deterministic across hash seeds, so the numbers reproduce byte-for-byte.
 
 ---
 
+## The learning loop (the part that compounds)
+
+When an analyst resolves a parked exception in the console, if the batch's reference was
+*present but unparsed* in the narration (a novel grouping like `PYT-7261-6751-3613` vs
+`PYT726167513613`), the system induces a reusable, scoped rule — and a re-run applies it
+across the whole file. In the demo dataset, **one** human resolution recovers **16/16**
+similar credits, lifting auto-resolve from **27.3% → 100%** at **100% precision, 0
+hallucinations**. The safety guarantee: a learned rule only *points* at a candidate; the
+same amount guard the rest of the pipeline uses still decides whether the pointer is
+right, so a bad rule can never manufacture a wrong match.
+
+---
+
 ## Quick start
 
 ```bash
@@ -95,7 +186,7 @@ To enable the LLM adjudicator, put a key in `.env` (see `.env.example`) and add
 `--adjudicate`. Model: `claude-sonnet-4-6`. Force the zero-LLM path explicitly with
 `RECON_DISABLE_LLM=1`.
 
-### The console (Phase 8)
+### The console
 
 A FastAPI backend serves a React/Vite/Tailwind exception-queue console. The product is
 the drill-down: an analyst inspects a parked credit (narration, extracted references,
@@ -115,14 +206,15 @@ backend on :8000) alongside the uvicorn command above.
 
 ---
 
-## How it works (one paragraph)
+## Why it matters for Razorpay
 
-Each bank credit is matched through an ordered cascade, and **the first layer confident
-enough to be safe wins**; anything ambiguous falls through to the next layer, and
-whatever survives the whole cascade is abstained (routed to a human). Layers share a
-global *consumed-line / consumed-batch* ledger, so a settlement line can only be spent
-once — which is what makes the traps fail safely. See **[ARCHITECTURE.md](ARCHITECTURE.md)**
-for the full walkthrough of the cascade, the trap taxonomy, and the guards.
+Razorpay *is* the gateway in the diagram above — the middleman settling money to millions
+of Indian merchants. Reconciliation is those merchants' daily pain, at a scale no team
+can do by hand, where a single wrong match is misattributed funds and a compliance risk.
+This design fits that exactly: **trustworthy** (100% precision or an honest abstention),
+**high-scale and near-free** (88% solved by plain arithmetic, the model used only on the
+hard remainder), and **self-improving** (every analyst correction becomes an automatic
+rule). It turns reconciliation from a manual chore into a product surface.
 
 ---
 
