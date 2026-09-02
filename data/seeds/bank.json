@@ -1,0 +1,433 @@
+{
+  "account": "RAZORPAY SETTLEMENT A/C ****4471",
+  "currency": "INR",
+  "transactions": [
+    {
+      "bank_txn_id": "TXN-000042",
+      "amount": "803,732.13",
+      "value_date": "2026-05-23",
+      "narration": "IMPS/PUNBN605121375299/RAZORPAY SOFTWARE",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000050",
+      "amount": "448,759.54",
+      "value_date": "2026-01-26",
+      "narration": "RAZORPAY SETTLEMENT 2601",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000043",
+      "amount": "824,867.28",
+      "value_date": "2026-03-19",
+      "narration": "NEFT-IDFBN422774720691-CR-AMD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000052",
+      "amount": "1,017,257.09",
+      "value_date": "2026-04-17",
+      "narration": "IMPS INWARD CR RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000015",
+      "amount": "469,998.15",
+      "value_date": "2026-06-09",
+      "narration": "NEFT-YESBN794857618549-CR-DEL",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000045",
+      "amount": "270,658.90",
+      "value_date": "2026-04-23",
+      "narration": "RTGS IDFBN149671425270 RAZORPAYSOFTWAREP",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000046",
+      "amount": "459,875.97",
+      "value_date": "2026-01-26",
+      "narration": "NEFT CR ...813501 RAZORPAY",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000012",
+      "amount": "868,836.06",
+      "value_date": "2026-01-21",
+      "narration": "RTGS PUNBN756283300053 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000036",
+      "amount": "1,090,282.91",
+      "value_date": "2026-01-08",
+      "narration": "ach c/kkbkn057376681166/rzp settlement 0",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000007",
+      "amount": "549,744.19",
+      "value_date": "2026-06-21",
+      "narration": "RTGS YESBN198965133038 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000013",
+      "amount": "552,584.77",
+      "value_date": "2026-06-27",
+      "narration": "RTGS HDFCN723203369699 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000027",
+      "amount": "600,980.48",
+      "value_date": "2026-05-23",
+      "narration": "NEFT-PUNBN571883127094-CR-AMD",
+      "utr": "PUNBN571883127094"
+    },
+    {
+      "bank_txn_id": "TXN-000029",
+      "amount": "963,403.61",
+      "value_date": "2026-04-22",
+      "narration": "RTGS HDFCN098602693701 RAZORPAYSOFTWAREP",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000044",
+      "amount": "469,094.49",
+      "value_date": "2026-05-01",
+      "narration": "IMPS/ICICN629704908504/RAZORPAY SOFTWARE",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000041",
+      "amount": "975,085.91",
+      "value_date": "2026-03-05",
+      "narration": "inward   remit   0503         punbn04729",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000047",
+      "amount": "393,857.66",
+      "value_date": "2026-01-20",
+      "narration": "IMPS INWARD CR RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000031",
+      "amount": "501,370.04",
+      "value_date": "2026-02-01",
+      "narration": "IMPS/SBINN927048577435/RAZORPAY SOFTWARE",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000016",
+      "amount": "804,304.24",
+      "value_date": "2026-06-17",
+      "narration": "MB:SETTLE HDFCN118252825086",
+      "utr": "HDFCN118252825086"
+    },
+    {
+      "bank_txn_id": "TXN-000008",
+      "amount": "571,168.82",
+      "value_date": "2026-03-11",
+      "narration": "NEFT CR YESB ICICN830382200821 RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000035",
+      "amount": "873,783.18",
+      "value_date": "2026-07-05",
+      "narration": "NEFT CR HDFC ICICN117816619791 RAZORPAYS",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000030",
+      "amount": "1,001,365.16",
+      "value_date": "2026-05-14",
+      "narration": "MB:SETTLE UTIBN096515341625",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000003",
+      "amount": "847,294.50",
+      "value_date": "2026-02-26",
+      "narration": "RTGS KKBKN162957198361 RAZORPAYSOFTWAREPVTLTD",
+      "utr": "KKBKN162957198361"
+    },
+    {
+      "bank_txn_id": "TXN-000038",
+      "amount": "573,567.59",
+      "value_date": "2026-05-02",
+      "narration": "ach c/punbn630950339991/rzp settlement 0",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000002",
+      "amount": "720,135.56",
+      "value_date": "2026-04-15",
+      "narration": "NEFT-HDFCN057565537532-CR-CHN",
+      "utr": "HDFCN057565537532"
+    },
+    {
+      "bank_txn_id": "TXN-000028",
+      "amount": "334,690.81",
+      "value_date": "2026-04-23",
+      "narration": "ACH   C/KKBKN797915694890/RZP   SETTLEME",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000053",
+      "amount": "807,743.48",
+      "value_date": "2026-01-15",
+      "narration": "RAZORPAY SETTLEMENT 1501",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000054",
+      "amount": "807,743.48",
+      "value_date": "2026-01-15",
+      "narration": "RAZORPAY SETTLEMENT 1501",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000058",
+      "amount": "383,191.84",
+      "value_date": "2026-04-23",
+      "narration": "NEFT-INWARD-CREDIT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000048",
+      "amount": "187,387.28",
+      "value_date": "2026-06-28",
+      "narration": "NEFT CR KKBK UTIBN837669294476 RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000060",
+      "amount": "531,726.00",
+      "value_date": "2026-03-13",
+      "narration": "IMPS/UTIBN284151043251/RAZORPAY SOFTWARE PVT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000061",
+      "amount": "135,000.00",
+      "value_date": "2026-02-14",
+      "narration": "IMPS/2420403634/LOGISTIQ REFUND 1402",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000039",
+      "amount": "1,108,277.99",
+      "value_date": "2026-05-09",
+      "narration": "bulk payout UTIBN381349553212 ref8655",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000059",
+      "amount": "109,000.00",
+      "value_date": "2026-06-22",
+      "narration": "IMPS/8131897523/SAASLY REFUND 2206",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000011",
+      "amount": "835,179.75",
+      "value_date": "2026-03-06",
+      "narration": "RTGS YESBN809506170368 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000056",
+      "amount": "316,787.02",
+      "value_date": "2026-06-05",
+      "narration": "RTGS IDFBN329316213466 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000033",
+      "amount": "954,134.62",
+      "value_date": "2026-04-21",
+      "narration": "MB:SETTLE IDFBN009794878962",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000010",
+      "amount": "925,708.15",
+      "value_date": "2026-01-26",
+      "narration": "MB:SETTLE HDFCN713761139456",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000014",
+      "amount": "865,990.67",
+      "value_date": "2026-01-12",
+      "narration": "MB:SETTLE KKBKN473750808814",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000004",
+      "amount": "868,518.08",
+      "value_date": "2026-07-06",
+      "narration": "IMPS/YESBN615770105553/RAZORPAY SOFTWARE PVT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000018",
+      "amount": "1,098,872.41",
+      "value_date": "2026-01-25",
+      "narration": "NEFT CR UTIB HDFCN480241703820 RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000049",
+      "amount": "393,958.11",
+      "value_date": "2026-06-28",
+      "narration": "NEFT-UTIBN837669294476-CR-AMD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000037",
+      "amount": "660,840.83",
+      "value_date": "2026-05-10",
+      "narration": "NEFT CR SBIN KKBKN148908484345 RAZORPAYS",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000026",
+      "amount": "646,383.83",
+      "value_date": "2026-06-29",
+      "narration": "NEFT CR SBIN IDFBN124092609156 RAZORPAYSOFTW",
+      "utr": "IDFBN124092609156"
+    },
+    {
+      "bank_txn_id": "TXN-000020",
+      "amount": "378,026.35",
+      "value_date": "2026-02-18",
+      "narration": "NEFT-IDFBN612587003362-CR-KOL",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000025",
+      "amount": "1,020,579.41",
+      "value_date": "2026-02-24",
+      "narration": "MB:SETTLE IDFBN489535340699",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000032",
+      "amount": "512,181.22",
+      "value_date": "2026-06-12",
+      "narration": "NEFT CR IDFB YESBN423589665477 RAZORPAYS",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000057",
+      "amount": "383,191.84",
+      "value_date": "2026-04-23",
+      "narration": "NEFT-INWARD-CREDIT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000006",
+      "amount": "1,046,137.60",
+      "value_date": "2026-04-09",
+      "narration": "RTGS YESBN681846296253 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000021",
+      "amount": "928,997.35",
+      "value_date": "2026-05-13",
+      "narration": "NEFT CR ICIC YESBN612967148517 RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000055",
+      "amount": "743,526.29",
+      "value_date": "2026-06-05",
+      "narration": "IMPS/IDFBN329316213466/RAZORPAY SOFTWARE PVT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000051",
+      "amount": "448,759.54",
+      "value_date": "2026-01-26",
+      "narration": "RAZORPAY SETTLEMENT 2601",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000019",
+      "amount": "449,708.87",
+      "value_date": "2026-07-06",
+      "narration": "MB:SETTLE PUNBN398909439754",
+      "utr": "PUNBN398909439754"
+    },
+    {
+      "bank_txn_id": "TXN-000034",
+      "amount": "1,032,931.61",
+      "value_date": "2026-06-14",
+      "narration": "MB:SETTLE UTIBN002706367344",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000001",
+      "amount": "664,077.09",
+      "value_date": "2026-02-17",
+      "narration": "MB:SETTLE UTIBN416410688550",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000017",
+      "amount": "799,451.14",
+      "value_date": "2026-03-14",
+      "narration": "RTGS HDFCN386346302379 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000023",
+      "amount": "960,288.25",
+      "value_date": "2026-05-12",
+      "narration": "IMPS/HDFCN434566978572/RAZORPAY SOFTWARE PVT",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000009",
+      "amount": "559,123.51",
+      "value_date": "2026-06-18",
+      "narration": "NEFT CR ICIC ICICN229543678488 RAZORPAYSOFTW",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000005",
+      "amount": "563,665.01",
+      "value_date": "2026-05-09",
+      "narration": "RTGS SBINN656249568603 RAZORPAYSOFTWAREPVTLTD",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000040",
+      "amount": "1,029,118.40",
+      "value_date": "2026-02-02",
+      "narration": "inward   remit   0202         punbn57853",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000024",
+      "amount": "675,791.45",
+      "value_date": "2026-06-21",
+      "narration": "MB:SETTLE SBINN852092277115",
+      "utr": null
+    },
+    {
+      "bank_txn_id": "TXN-000022",
+      "amount": "835,047.14",
+      "value_date": "2026-05-17",
+      "narration": "MB:SETTLE PUNBN923464471888",
+      "utr": null
+    }
+  ]
+}
