@@ -1,0 +1,196 @@
+{
+  "metrics": {
+    "total": 800,
+    "decided": 703,
+    "abstained": 97,
+    "matched": 666,
+    "no_match": 37,
+    "correct": 703,
+    "incorrect": 0,
+    "auto_resolve_rate": 0.87875,
+    "precision": 1.0,
+    "traps_total": 40,
+    "hallucinated_matches": 0,
+    "hallucinated_match_rate": 0.0,
+    "per_tier": [
+      {
+        "tier": "easy",
+        "total": 360,
+        "decided": 360,
+        "correct": 360,
+        "coverage": 1.0,
+        "precision": 1.0
+      },
+      {
+        "tier": "medium",
+        "total": 240,
+        "decided": 240,
+        "correct": 240,
+        "coverage": 1.0,
+        "precision": 1.0
+      },
+      {
+        "tier": "hard",
+        "total": 160,
+        "decided": 66,
+        "correct": 66,
+        "coverage": 0.4125,
+        "precision": 1.0
+      },
+      {
+        "tier": "trap",
+        "total": 40,
+        "decided": 37,
+        "correct": 37,
+        "coverage": 0.925,
+        "precision": 1.0
+      }
+    ],
+    "resolution_sources": {
+      "exact_ref": 573,
+      "fee_adjusted": 85,
+      "none": 134,
+      "assignment": 8
+    },
+    "total_cost_usd": 0.0,
+    "cost_per_record_usd": 0.0,
+    "llm_calls_total": 0,
+    "records_with_llm": 0,
+    "records_deterministic": 800,
+    "latency_p50_ms": 0.746,
+    "latency_p99_ms": 1.249,
+    "det_latency_p50_ms": 0.746,
+    "det_latency_p99_ms": 1.249,
+    "llm_latency_p50_ms": 0.0,
+    "llm_latency_p99_ms": 0.0,
+    "errors": []
+  },
+  "curve": [
+    {
+      "threshold": 0.0,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.05,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.1,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.15,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.2,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.25,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.3,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.35,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.4,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.45,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.55,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.65,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.75,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.85,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.87875,
+      "precision": 1.0,
+      "decided": 703
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.8325,
+      "precision": 1.0,
+      "decided": 666
+    },
+    {
+      "threshold": 1.0,
+      "coverage": 0.72625,
+      "precision": 1.0,
+      "decided": 581
+    }
+  ]
+}
