@@ -1,0 +1,34 @@
+[project]
+name = "recon-agent"
+version = "0.1.0"
+description = "Three-way settlement reconciliation agent for Indian payment flows (deterministic-first, LLM-last)."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.6",
+    "duckdb>=0.10",
+    "scipy>=1.12",
+    "numpy>=1.26",
+    "anthropic>=0.39",
+    "python-dotenv>=1.0",
+    "openpyxl>=3.1",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

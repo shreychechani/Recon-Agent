@@ -1,0 +1,25 @@
+# Environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Secrets
+.env
+
+# Generated data (regenerable; seeds/ is committed instead)
+data/generated/
+
+# Schema-mapping cache
+.cache/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
