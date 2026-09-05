@@ -1,0 +1,27 @@
+{
+  "account": "RAZORPAY SETTLEMENT A/C ****4471",
+  "currency": "INR",
+  "transactions": [
+    {
+      "bank_txn_id": "BANK-0001",
+      "amount": "3,905.60",
+      "value_date": "2026-08-18",
+      "narration": "RAZORPAY SETTLEMENT 1787000000ax7k21 CR",
+      "utr": "1787000000ax7k21"
+    },
+    {
+      "bank_txn_id": "BANK-0002",
+      "amount": "2,385.10",
+      "value_date": "2026-08-20",
+      "narration": "RAZORPAY SETTLEMENT 1787200000bq3m88 CR",
+      "utr": "1787200000bq3m88"
+    },
+    {
+      "bank_txn_id": "BANK-0003",
+      "amount": "2,050.44",
+      "value_date": "2026-08-22",
+      "narration": "RAZORPAY SETTLEMENT 1787400000cz9p04 CR",
+      "utr": "1787400000cz9p04"
+    }
+  ]
+}

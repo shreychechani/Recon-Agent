@@ -204,6 +204,28 @@ python -m uvicorn src.api.main:app --port 8000
 For live frontend development, run `npm run dev` (Vite on :5173, proxying `/api` to the
 backend on :8000) alongside the uvicorn command above.
 
+### Live Razorpay data (Settlement Recon API)
+
+The engine reconciles **real Razorpay data**, not just synthetic fixtures. Razorpay's
+**Settlement Recon Report API** (`GET /v1/settlements/recon/combined`, via the official
+`razorpay` Python SDK) returns every settled transaction with its `settlement_id`,
+`settlement_utr`, fees/tax, and linked `order_id` — two of our three inputs, straight
+from the source. `src/ingest/razorpay_source.py` maps those items into the canonical
+models, so live data flows through the identical pipeline.
+
+```bash
+# live: put rzp_test_* keys in .env, then pull a month of settlements into a dataset
+python -m src.ingest.razorpay_pull --year 2026 --month 8 --out data/razorpay/
+
+# offline (no key): the repo ships a real-shaped recon payload for the demo
+python -m src.ingest.razorpay_pull --from-json data/razorpay_recon_sample.json --out data/razorpay/
+python -m src.eval.report --data data/razorpay/ --matcher pipeline
+```
+
+In the console, the **"Razorpay API data"** button loads this dataset directly. Only the
+network fetch touches Razorpay; the mapping is pure and unit-tested, so the whole path
+runs offline against the bundled payload.
+
 ---
 
 ## Why it matters for Razorpay
@@ -214,7 +236,9 @@ can do by hand, where a single wrong match is misattributed funds and a complian
 This design fits that exactly: **trustworthy** (100% precision or an honest abstention),
 **high-scale and near-free** (88% solved by plain arithmetic, the model used only on the
 hard remainder), and **self-improving** (every analyst correction becomes an automatic
-rule). It turns reconciliation from a manual chore into a product surface.
+rule). And it plugs straight into the platform: it pulls settlements and orders from
+Razorpay's **Settlement Recon Report API** and reconciles them end-to-end. It turns
+reconciliation from a manual chore into a product surface.
 
 ---
 
@@ -224,6 +248,7 @@ rule). It turns reconciliation from a manual chore into a product surface.
 src/
   generator/      synthetic data + ground truth (orders, settlements, bank, traps)
   ingest/         schema mapping (alias table, LLM fallback) + dataset loader
+                  razorpay_source.py / razorpay_pull.py — pull the live Settlement Recon API
   fees.py         the settlement fee model (gross → net)
   models.py       pydantic types: Order, SettlementLine, BankCredit, MatchResult, …
   match/

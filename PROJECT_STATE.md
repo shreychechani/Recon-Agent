@@ -7,10 +7,13 @@
 > matcher ordering, consumed-line tracking).
 >
 > Keep this file updated at the end of each working session.
-> Last updated: 2026-09-01 (end of Phase 9 — README rewritten + ARCHITECTURE.md written;
-> train/holdout runs captured to reports/ (train 87.6/100/0, holdout 87.9/100/0). An
-> end-to-end UI check preceded this and turned up BUG-003 (fixed). **All phases 0–9 DONE
-> & tested; 73 tests pass.** Zero-LLM baseline unchanged). See ENGINEERING_LOG.md for the
+> Last updated: 2026-09-04 (Phase 10 — Razorpay API integration, a Buildathon
+> requirement: pulls the Settlement Recon Report API via the official SDK and maps it
+> into the canonical models, so real settlement data runs through the identical pipeline;
+> offline demo + UI "Razorpay API data" button; `razorpay` added to deps. Earlier:
+> Phase 9 docs (README + ARCHITECTURE.md; train/holdout 87.6/100/0, 87.9/100/0) and the
+> UI check that found BUG-003. **All phases 0–10 DONE & tested; 78 tests pass; repo
+> pushed to GitHub.** Zero-LLM baseline unchanged). See ENGINEERING_LOG.md for the
 > write-ups: BUG-001 dup_utr subset-sum + nondeterminism, BUG-002 forged-UTR assignment,
 > FINDING-003 (Phase-6 adjudicator = precision guard + explainer), FINDING-004 (Phase-7
 > learning loop), FINDING-005 (Phase-8 drill-down re-derived server-side; stale-venv
@@ -82,6 +85,7 @@ and CI). All SDK usage is isolated in `src/llm.py`.
 | 7 | learned-rule learning loop | ✅ DONE, tested (induce→verify→persist; 1 resolution lifts a cohort 27→100% @ 100% prec; see FINDING-004) |
 | 8 | FastAPI + React UI | ✅ DONE, tested (exception-queue drill-down + 2-click resolve→learn→re-run; fixed BUG-003 client/server contract) |
 | 9 | README, ARCHITECTURE.md, holdout run | ✅ DONE (README + ARCHITECTURE.md written; train/holdout captured to reports/) |
+| 10 | Razorpay API integration (Buildathon requirement) | ✅ DONE, tested (Settlement Recon API → canonical models → same pipeline; live via SDK, offline via bundled recon payload; UI "Razorpay API data" button; 5 tests; reconciles real-shaped data 100%/100%) |
 
 **Phase 7 note.** Analyst resolutions → reusable narration rules (`src/rules/learned.py`),
 persisted to JSON (`RuleStore`), consulted BEFORE deterministic (`resolved_by="learned_rule"`).

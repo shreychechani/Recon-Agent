@@ -45,6 +45,7 @@ SAMPLE_DIRS = {
     "holdout": "data/generated/holdout",
     "sample": "data/seeds",
     "learn_demo": "data/generated/learn_demo",
+    "razorpay": "data/razorpay",  # built from Razorpay Settlement-Recon data (src.ingest.razorpay_pull)
 }
 
 app = FastAPI(title="Reconciliation Console", version="0.8")

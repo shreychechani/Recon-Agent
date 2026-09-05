@@ -382,3 +382,40 @@ it's invisible until the render sequence shifts: it works until it doesn't, for
 reasons unrelated to the change that finally exposes it. The broader lesson: the UI
 check earns its keep — this never fires in the API tests, only in a real browser doing
 the state transitions in order.
+
+---
+
+## FINDING-006 — Phase 10: integrating the real Razorpay API without touching the engine
+
+**Context.** The Buildathon requires integrating a Razorpay API. The temptation with a
+"required integration" is to bolt on a token API call that doesn't really belong. We
+looked for the integration that was *already* the thesis, and Razorpay's **Settlement
+Recon Report API** turned out to be an uncanny fit: per settled transaction it returns a
+`settlement_id` (the payout batch), a `settlement_utr` (the reference echoed in the bank
+narration), the money (`amount`/`fee`/`tax`/`credit`/`debit`), the line `type`, and the
+linked `order_id`. That is two of our three inputs — settlements and orders — straight
+from the source.
+
+**What we built.** `src/ingest/razorpay_source.py`: `fetch_recon()` calls
+`client.settlement.report(...)` (the official SDK wrapping
+`GET /v1/settlements/recon/combined`), and `recon_items_to_models()` maps the items into
+the exact same `Order` / `SettlementLine` / `BankCredit` models the file loader produces.
+Items sharing a `settlement_id` roll up into one `BankCredit` (net = Σ(credit − debit),
+UTR-bearing narration), and since we know each batch's composition we emit ground truth
+too, so a live run is scorable. A CLI (`razorpay_pull.py`) writes a standard dataset
+directory, so `report`, the console, and the tests all consume live data **with zero
+downstream changes**.
+
+**The design choice that mattered.** Only `fetch_recon` touches the network;
+`recon_items_to_models` is a pure function. That is the same injectable-seam discipline
+the adjudicator uses (`call_fn`): the API is one boundary, everything else stays
+deterministic and unit-tested. The payoff is concrete — the repo ships a real-shaped
+recon payload (`data/razorpay_recon_sample.json`), so the whole path (map → reconcile →
+100% precision, including a refund line that makes a batch net to less than its gross)
+runs in CI with **no key and no network**, and lights up against live `rzp_test_*` keys
+by swapping the one seam. The engine never learned that its data now comes from an API.
+
+**Regression guard.** `tests/test_razorpay_source.py` (5 tests): the mapping's shapes and
+money (incl. the negative refund line), ground truth matching batch composition,
+`settled: false` items skipped, the paginating fetch driven by an injected fake client,
+and an end-to-end reconcile of live-shaped data at 100% precision via `exact_ref`.

@@ -1,0 +1,37 @@
+[
+  {
+    "bank_txn_id": "BANK-0001",
+    "settlement_ids": [
+      "pay_LIVEA1",
+      "pay_LIVEA2",
+      "pay_LIVEA3"
+    ],
+    "difficulty": "easy",
+    "corruption_tags": [
+      "razorpay_live"
+    ]
+  },
+  {
+    "bank_txn_id": "BANK-0002",
+    "settlement_ids": [
+      "pay_LIVEB1",
+      "pay_LIVEB2",
+      "rfnd_LIVEB3"
+    ],
+    "difficulty": "easy",
+    "corruption_tags": [
+      "razorpay_live"
+    ]
+  },
+  {
+    "bank_txn_id": "BANK-0003",
+    "settlement_ids": [
+      "pay_LIVEC1",
+      "pay_LIVEC2"
+    ],
+    "difficulty": "easy",
+    "corruption_tags": [
+      "razorpay_live"
+    ]
+  }
+]

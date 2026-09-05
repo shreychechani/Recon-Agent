@@ -12,6 +12,12 @@ const SAMPLES = [
     desc: "22 credits — a novel reference format; resolve one, learn the rest",
     accent: true,
   },
+  {
+    name: "razorpay",
+    title: "Razorpay API data",
+    desc: "pulled from the Settlement Recon Report API — real settlement batches",
+    accent: true,
+  },
 ];
 
 export default function LoadView({ onRun }) {

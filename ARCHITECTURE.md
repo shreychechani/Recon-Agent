@@ -218,6 +218,17 @@ lifting auto-resolve from 27.3% → 100% at 100% precision, 0 hallucinations.
 - **Fee model** ([`src/fees.py`](src/fees.py)) recomputes a batch's **net** from its
   gross lines, fees, taxes, and negative adjustments — this is what 4b checks against,
   and the source of the ±5 paise rounding tolerance.
+- **Live Razorpay source** ([`src/ingest/razorpay_source.py`](src/ingest/razorpay_source.py))
+  pulls the **Settlement Recon Report API** (`GET /v1/settlements/recon/combined`, via the
+  official `razorpay` SDK) and maps each recon item into our models: `settlement_id` → a
+  payout batch, `settlement_utr` → the batch's reference, `amount`/`fee`/`tax`/`credit`/
+  `debit` → the line's money, `order_id` → the order ledger. Items sharing a
+  `settlement_id` roll up into one `BankCredit` (the money that lands), and because we
+  know each batch's composition we also emit ground truth — so a run on live data is
+  scorable. Only `fetch_recon` touches the network; `recon_items_to_models` is a pure,
+  unit-tested mapping (the same injectable-seam discipline as the adjudicator's `call_fn`).
+  The CLI [`src/ingest/razorpay_pull.py`](src/ingest/razorpay_pull.py) writes a standard
+  dataset directory, so every downstream tool consumes live data unchanged.
 
 ---
 
